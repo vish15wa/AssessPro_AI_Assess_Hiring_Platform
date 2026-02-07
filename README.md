@@ -44,20 +44,6 @@ Multiple specialized AI agents collaborate to handle different stages of the hir
 
 ---
 
-## 🧩 System Architecture
-
-Job Description
-↓
-Assessment Blueprint (Skills + Weights)
-↓
-Automated Question Generation
-↓
-Candidate Responses
-↓
-AI-Based Scoring & Feedback
-↓
-Final Hiring Insights
-
 
 ---
 >>>>>>> dd9c2e0 (Rewrite README with startup-pitch level project overview)
