@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, Job, Difficulty, Question } from '../types';
 import { MockDb } from '../services/mockDb';
-import { generateAssessmentQuestions } from '../services/geminiService';
+import { generateQuestionsViaBackend, createJobViaBackend } from '../services/backendApiService';
 
 interface CreateJobProps {
   user: User | null;
@@ -39,15 +39,26 @@ const CreateJob: React.FC<CreateJobProps> = ({ user, onNavigate, editJobId }) =>
 
     setLoading(true);
     try {
-      const questions = await generateAssessmentQuestions(formData);
-      
+      // Call backend API instead of Gemini
+      // Create job on backend (it will generate questions server-side)
+      const payload = {
+        title: formData.title || '',
+        description: formData.description || '',
+        durationMinutes: formData.durationMinutes,
+        difficulty: formData.difficulty || Difficulty.MEDIUM,
+        threshold: formData.threshold || 30,
+      };
+
+      const created = await createJobViaBackend(payload);
+
+      // Also save locally so MockDb-based parts keep working
       const newJob: Job = {
         ...formData,
-        id: editJobId || Math.random().toString(36).substr(2, 9),
+        id: String(created.id || editJobId || Math.random().toString(36).substr(2, 9)),
         recruiterId: user.id,
         recruiterName: user.fullName,
         createdAt: new Date().toISOString(),
-        questions: questions,
+        questions: created.questions || [],
         requirements: [] 
       } as Job;
 
@@ -55,7 +66,8 @@ const CreateJob: React.FC<CreateJobProps> = ({ user, onNavigate, editJobId }) =>
       alert("Job created successfully");
       onNavigate('dashboard');
     } catch (err) {
-      alert("Error generating assessment. Please check your internet or JD.");
+      console.error('Backend error:', err);
+      alert("Error generating assessment. Please ensure the backend API is running at http://localhost:8000");
     } finally {
       setLoading(false);
     }

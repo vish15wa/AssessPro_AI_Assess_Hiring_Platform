@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, UserRole, Job, Application } from '../types';
 import { MockDb } from '../services/mockDb';
+import { fetchJobsFromBackend } from '../services/backendApiService';
 
 interface DashboardProps {
   user: User | null;
@@ -14,8 +15,22 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onNavigate }) => {
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
-    setJobs(MockDb.getJobs());
-    setApplications(MockDb.getApplications());
+    const load = async () => {
+      try {
+        const remote = await fetchJobsFromBackend();
+        if (remote && Array.isArray(remote) && remote.length > 0) {
+          setJobs(remote as any);
+        } else {
+          setJobs(MockDb.getJobs());
+        }
+      } catch (err) {
+        setJobs(MockDb.getJobs());
+      }
+
+      setApplications(MockDb.getApplications());
+    };
+
+    load();
   }, []);
 
   const handleApply = (jobId: string) => {

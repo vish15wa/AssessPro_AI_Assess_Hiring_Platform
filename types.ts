@@ -40,7 +40,7 @@ export interface Question {
   id: string;
   type: QuestionType;
   text: string;
-  options?: string[];
+  options?: Record<string, string>;  // Changed from string[] to object {A: "...", B: "...", etc}
   correctAnswer?: string;
   marks: number;
   difficulty: Difficulty;
