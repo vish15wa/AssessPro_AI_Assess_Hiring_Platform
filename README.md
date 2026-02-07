@@ -1,13 +1,66 @@
 <<<<<<< HEAD
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
 
-# Run and deploy your AI Studio app
+=======
+# AssessPro AI 🚀  
+### Intelligent, Autonomous Hiring Assessments — Powered by AI Agents
 
-This contains everything you need to run your app locally.
+AssessPro AI is a next-generation hiring assessment platform that automates how companies evaluate talent. By combining multi-agent AI systems with structured evaluation logic, AssessPro AI transforms job descriptions into skill-weighted assessments, generates high-quality interview questions, and delivers unbiased, explainable candidate scoring — all in minutes, not days.
 
-View your app in AI Studio: https://ai.studio/apps/temp/1
+Hiring, reimagined with intelligence.
+
+---
+
+## 🌟 Why AssessPro AI?
+
+Traditional hiring is slow, manual, and inconsistent. Recruiters spend hours designing tests, reviewing answers, and making subjective judgments.
+
+AssessPro AI solves this by:
+- Automating assessment creation from job descriptions
+- Standardizing evaluation across candidates
+- Reducing bias with structured, skill-based scoring
+- Delivering fast, data-backed hiring insights
+
+---
+
+## 🔥 Core Capabilities
+
+### 🧠 Autonomous AI Agents
+Multiple specialized AI agents collaborate to handle different stages of the hiring pipeline:
+- **JD → Skill Extraction**
+- **Skill → Question Generation**
+- **Answer → Scoring & Feedback**
+
+### 📝 Smart Assessment Generation
+- Role-specific MCQs  
+- Practical coding challenges  
+- Behavioral & subjective questions  
+- Balanced difficulty and skill coverage  
+
+### 📊 Explainable Scoring Engine
+- Skill-wise score breakdown  
+- Constructive, human-readable feedback  
+- Transparent evaluation logic  
+
+
+---
+
+## 🧩 System Architecture
+
+Job Description
+↓
+Assessment Blueprint (Skills + Weights)
+↓
+Automated Question Generation
+↓
+Candidate Responses
+↓
+AI-Based Scoring & Feedback
+↓
+Final Hiring Insights
+
+
+---
+>>>>>>> dd9c2e0 (Rewrite README with startup-pitch level project overview)
 
 ## Run Locally
 
